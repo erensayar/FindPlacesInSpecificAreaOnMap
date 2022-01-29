@@ -1,0 +1,26 @@
+## Constants
+google:
+  places-api:
+    nearby-search:
+      base-link: https://maps.googleapis.com/maps/api/place/nearbysearch
+      object-data-format: /json
+
+## Server Config
+server:
+  port: 8070
+
+## H2 DB Config
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher # Spring 2.6 and upper version need it for use swagger 2.9
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:h2:mem:find-places
+    username: sa
