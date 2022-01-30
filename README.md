@@ -20,7 +20,14 @@ You can find requirements setup instructions below.
 
 # Build And Run Application
 
-## 1. Use Wrappers (Fastest Method)
+## 1. Front End Build
+
+    $ cd <FE_PROJECT_DIR>
+    $ npm run build
+    $ cp -r /build /<BE_MODULE_MAIN_DIR>/src/main/resources/static 
+    (copy FE build file to BE static folder)
+
+## 2. Run BE Module With Use Wrappers (Fastest Method)
 * Easiest way run the spring application. Used maven wrapper for run the app for this way.(wrapper: mvnw or mvnw.cmd)
 
     * Get application source code with Git. (You should have git program for run this command or you can just download source code from browser)
@@ -31,7 +38,7 @@ You can find requirements setup instructions below.
             $ cd FindPlacesInSpecificAreaOnMap
             $ mvn spring-boot:run
 
-## 2. Packaging (Different Way)
+## Different Way For BE Running: Packaging
 * Get application source code with Git. (You should have git program for run this command or you can just download source code from browser)
 
         $ git clone https://github.com/erensayar/FindPlacesInSpecificAreaOnMap.git
