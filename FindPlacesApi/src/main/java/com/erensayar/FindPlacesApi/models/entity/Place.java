@@ -1,12 +1,12 @@
 package com.erensayar.FindPlacesApi.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
 
 @Getter
 @Setter
@@ -24,13 +24,16 @@ public class Place {
 
     private String coordinate;
 
-    // private String isOpen; // TODO : Null pointer problemi
+    private String isOpen;
 
     private Double rating;
+
+    private String photoReference;
 
     private String address;
 
     private String type;
 
+    @JsonIgnore
     private String searchParamsCoordinateRadius; // for query did repeat control
 }

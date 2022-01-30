@@ -1,9 +1,11 @@
 ## Constants
 google:
   places-api:
-    nearby-search:
-      base-link: https://maps.googleapis.com/maps/api/place/nearbysearch
-      object-data-format: /json
+    base-url: https://maps.googleapis.com/maps/api/place
+    data-format: /json
+    services:
+      nearby-search:
+        url: /nearbysearch
 
 ## Server Config
 server:

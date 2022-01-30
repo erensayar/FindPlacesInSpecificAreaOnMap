@@ -2,7 +2,6 @@ package com.erensayar.FindPlacesApi.models.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
@@ -40,6 +39,19 @@ public class GooglePlaceApiResponse {
         @Setter(onMethod_ = {@JsonProperty("vicinity")})
         private String vicinity;
 
+        @Setter(onMethod_ = {@JsonProperty("types")})
+        private List<String> types;
+
+        @Setter(onMethod_ = {@JsonProperty("photos")})
+        private List<Photo> photos;
+
+        @Data
+        public static class Photo {
+
+            @Setter(onMethod_ = {@JsonProperty("photo_reference")})
+            private String photoReference;
+        }
+
         @Data
         public static class Geometry {
 
@@ -61,7 +73,7 @@ public class GooglePlaceApiResponse {
         public static class OpeningHours {
 
             @Setter(onMethod_ = {@JsonProperty("open_now")})
-            private String openNow; // TODO : Null pointer problemi
+            private String openNow;
         }
 
     }
