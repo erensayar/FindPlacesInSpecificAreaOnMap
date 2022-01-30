@@ -18,6 +18,35 @@ Frontend Ruquirements:
     
 You can find requirements setup instructions below.
 
+# Build And Run Application
+
+## 1. Use Wrappers (Fastest Method)
+* Easiest way run the spring application. Used maven wrapper for run the app for this way.(wrapper: mvnw or mvnw.cmd)
+
+    * Get application source code with Git. (You should have git program for run this command or you can just download source code from browser)
+
+        Use commands in order:
+
+            $ git clone https://github.com/erensayar/FindPlacesInSpecificAreaOnMap.git
+            $ cd FindPlacesInSpecificAreaOnMap
+            $ mvn spring-boot:run
+
+## 2. Packaging (Different Way)
+* Get application source code with Git. (You should have git program for run this command or you can just download source code from browser)
+
+        $ git clone https://github.com/erensayar/FindPlacesInSpecificAreaOnMap.git
+        $ cd FindPlacesInSpecificAreaOnMap
+
+* Compilation and build with maven.
+    
+        $ mvn package
+    
+* Now we have a jar file.
+
+        java -jar <jarFileName>.jar
+        
+
+
 
 # API
 
@@ -99,26 +128,3 @@ Maven:
 
         export JAVA_HOME=/${PATH}/${JAVA-MAIN-DIRECTORY}
         export PATH=$JAVA_HOME/bin:$PATH
-
-# Build And Run Application
-
-## 1. Packaging:
-* Get application source code with Git. (You should have git program for run this command or you can just download source code from browser)
-
-        $ git clone https://github.com/erensayar/FindPlacesInSpecificAreaOnMap.git
-        $ cd FindPlacesInSpecificAreaOnMap
-
-* Compilation and build with maven.
-    
-        $ mvn package
-    
-* Now we have a jar file.
-
-        java -jar <jarFileName>.jar
-        
-## 2. Use Wrappers
-Also you can use maven wrapper for run the app.(mvnw or mvnw.cmd)
-
-If you don't want setups, you can use wrapper. Easiest way run the spring application.
-
-    $ mvn spring-boot:run
