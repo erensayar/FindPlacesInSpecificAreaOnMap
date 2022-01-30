@@ -1,4 +1,8 @@
- 
+# Used Tecnologies
+Spring Boot, Java 11, Maven, React.js
+
+# Application Purpose
+You can see nearby places to given coordinate. Feed Google Places API. 
 
 # Requirements
 
@@ -6,12 +10,53 @@ Backend Requirements
 
 * JDK 11 http://jdk.java.net/java-se-ri/11 (OpenJDK)
 * Maven https://maven.apache.org/download.cgi
+
+Frontend Ruquirements:
+
+* Node.js https://nodejs.org/en/download/
+
     
+You can find requirements setup instructions below.
 
----
 
-Requirements Setup For GNU/Linux:
---
+# API
+
+* EndPoint:
+
+    {{base-url}}/api/v1/query/google-places?location=<LATITUDE>,<LONGITUDE>&radius=<RADIUS>&type=<PLACE_TYPE>&key=<API_KEY>
+
+* Response Sample: 
+
+    ```
+    {
+        "id": 33,
+        "name": "Hede Hödö Place",
+        "coordinate": "41.00000,28.00000",
+        "isOpen": "false",
+        "rating": 4.5,
+        "photoReference": "Aap_uEC8Q3F0HMoy0nYsHGuajDoiNxHhiUkNoW70p3eO1NASjeP0",
+        "address": "Galata Kulesi Sokak",
+        "type": "bar, point_of_interest, establishment"
+    }
+    ```
+
+# Default Application Configurations
+
+* Server Port : <b>8070</b>
+* Swagger Directory : /swagger-ui.html
+* H2 Console Directory : /h2-console/login
+* H2 Console Configurations:
+    * User Name: sa
+    * Datasource.url: <b>jdbc:h2:find-places</b>
+
+# Front End Screen Shot
+![h2-db-config](./dev-doc/fe-ss1.png)
+
+
+
+
+# Requirements Setup For GNU/Linux:
+
 
 1.You can use package manager:
 
@@ -60,8 +105,8 @@ Maven:
 ## 1. Packaging:
 * Get application source code with Git. (You should have git program for run this command or you can just download source code from browser)
 
-        $ git clone https://github.com/erensayar/CourseOtomation.git
-        $ cd ToDoApp
+        $ git clone https://github.com/erensayar/FindPlacesInSpecificAreaOnMap.git
+        $ cd FindPlacesInSpecificAreaOnMap
 
 * Compilation and build with maven.
     
@@ -77,28 +122,3 @@ Also you can use maven wrapper for run the app.(mvnw or mvnw.cmd)
 If you don't want setups, you can use wrapper. Easiest way run the spring application.
 
     $ mvn spring-boot:run
-
-# Default Application Configurations
-
-* Server Port : <b>8000</b>
-* Swagger Directory : /swagger-ui.html
-* H2 Console Directory : /h2-console/login
-* H2 Console Configurations:
-    * User Name: sa
-    * Datasource.url: jdbc:h2:course-otomation
-
-![h2-db-config](./dev-doc/h2.png)
-    
-
-# I Prepared Collection With Saved Request & Saved Responses
-* You can use swagger of course but if you want use postman or something u can import this collection. This collection include saved request and response and all endpoints. 
-
-Directory: ./dev-doc/Course Otomation.postman_collection.json
-
-Some Requests:
-
-![Requests](./dev-doc/Postman.png)
-
-# Entity Relation Diagram (ERD)
-
-![Requests](./dev-doc/ERD.png)
