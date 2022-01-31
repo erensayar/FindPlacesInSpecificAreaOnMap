@@ -36,7 +36,7 @@ public class QueryServiceImpl implements QueryService {
     @Override
     public List<Place> sendQueryToGooglePlacesApi(Map<String, String> paramMap) {
         String coordinate = paramMap.get("location");
-        Integer radius = Integer.valueOf(paramMap.get("radius"));
+        String radius = paramMap.get("radius");
 
         // This params(coordinate+radius) help me when I'm controlling, query is recurring query?
         String searchParamsCoordinateRadius = coordinate + "-" + radius;
@@ -102,13 +102,14 @@ public class QueryServiceImpl implements QueryService {
             String longitude = coordinateSimplifier(String.valueOf(r.getGeometry().getLocation().getLng()));
             String coordinate = latitude + "," + longitude;
             String isOpen = r.getOpeningHours() == null ? null : r.getOpeningHours().getOpenNow();
+            String photoReference = r.getPhotos() == null || r.getPhotos().size() == 0 ? null : r.getPhotos().get(0).getPhotoReference();
             Place place = Place.builder()
                     .name(r.getName())
                     .coordinate(coordinate)
                     .rating(r.getRating())
                     .address(r.getVicinity())
                     .searchParamsCoordinateRadius(searchParamsCoordinateRadius)
-                    .photoReference(r.getPhotos().get(0).getPhotoReference())
+                    .photoReference(photoReference)
                     .type(listToString(r.getTypes()))
                     .isOpen(isOpen)
                     .build();
