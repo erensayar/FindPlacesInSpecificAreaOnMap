@@ -35,7 +35,7 @@ public class QueryServiceImpl implements QueryService {
 
     @Override
     public List<Place> sendQueryToGooglePlacesApi(Map<String, String> paramMap) {
-        String coordinate = paramMap.get("location");
+        String coordinate = paramMap.get("location").replaceAll("\\s","");
         String radius = paramMap.get("radius");
 
         // This params(coordinate+radius) help me when I'm controlling, query is recurring query?
