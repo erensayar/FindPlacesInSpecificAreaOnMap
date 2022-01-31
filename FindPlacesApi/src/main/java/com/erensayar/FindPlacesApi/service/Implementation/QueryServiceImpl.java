@@ -103,14 +103,18 @@ public class QueryServiceImpl implements QueryService {
             String coordinate = latitude + "," + longitude;
             String isOpen = r.getOpeningHours() == null ? null : r.getOpeningHours().getOpenNow();
             String photoReference = r.getPhotos() == null || r.getPhotos().size() == 0 ? null : r.getPhotos().get(0).getPhotoReference();
+            String name = r.getName() == null ? null : r.getName();
+            Double rating = r.getRating() == null ? null : r.getRating();
+            String address = r.getVicinity() == null ? null : r.getVicinity();
+            String types = r.getTypes() == null ? null : listToString(r.getTypes());
             Place place = Place.builder()
-                    .name(r.getName())
+                    .name(name)
                     .coordinate(coordinate)
-                    .rating(r.getRating())
-                    .address(r.getVicinity())
+                    .rating(rating)
+                    .address(address)
                     .searchParamsCoordinateRadius(searchParamsCoordinateRadius)
                     .photoReference(photoReference)
-                    .type(listToString(r.getTypes()))
+                    .type(types)
                     .isOpen(isOpen)
                     .build();
             places.add(place);
