@@ -2,7 +2,7 @@
 Spring Boot, Java 11, Maven, React.js
 
 # Application Purpose
-You can see nearby places to given coordinate. Feed Google Places API. 
+You can see nearby places to given coordinate. The app feed from Google Places API. 
 
 # Requirements
 
@@ -20,29 +20,30 @@ You can find requirements setup instructions below.
 
 # Build And Run Application
 
+## Download The Application
+
+	$ git clone https://github.com/erensayar/FindPlacesInSpecificAreaOnMap.git
+
+
 ## 1. Front End Build
 
-    $ cd <FE_PROJECT_DIR>
+    In FE Project Main Directory:
+    
     $ npm run build
-    $ cp -r /build /<BE_MODULE_MAIN_DIR>/src/main/resources/static 
-    (copy FE build file to BE static folder)
+    $ cp -r /build /<BE_MODULE_MAIN_DIR>/src/main/resources/static  (copy FE build file to BE static folder)
 
-## 2. Run BE Module With Use Wrappers (Fastest Method)
-* Easiest way run the spring application. Used maven wrapper for run the app for this way.(wrapper: mvnw or mvnw.cmd)
+## 2. Run BE Module With Use Wrappers: Fastest Method
+Easiest way run the spring application. Used maven wrapper for run the app for this way.(wrapper: mvnw or mvnw.cmd)
 
-    * Get application source code with Git. (You should have git program for run this command or you can just download source code from browser)
-
-        Use commands in order:
-
-            $ git clone https://github.com/erensayar/FindPlacesInSpecificAreaOnMap.git
-            $ cd FindPlacesInSpecificAreaOnMap
-            $ mvn spring-boot:run
+    In BE Project Main Directory:
+		
+    $ mvn spring-boot:run
 
 ## Different Way For BE Running: Packaging
-* Get application source code with Git. (You should have git program for run this command or you can just download source code from browser)
 
-        $ git clone https://github.com/erensayar/FindPlacesInSpecificAreaOnMap.git
-        $ cd FindPlacesInSpecificAreaOnMap
+<b>(You must complete step 1 before starting here)</b>
+
+In BE Project Main Directory:
 
 * Compilation and build with maven.
     
@@ -51,8 +52,6 @@ You can find requirements setup instructions below.
 * Now we have a jar file.
 
         java -jar <jarFileName>.jar
-        
-
 
 
 # API
@@ -76,6 +75,7 @@ You can find requirements setup instructions below.
     }
     ```
 
+
 # Default Application Configurations
 
 * Server Port : <b>8070</b>
@@ -86,9 +86,8 @@ You can find requirements setup instructions below.
     * Datasource.url: <b>jdbc:h2:find-places</b>
 
 # Front End Screen Shot
+
 ![h2-db-config](./dev-doc/fe-ss1.png)
-
-
 
 
 # Requirements Setup For GNU/Linux:
