@@ -8,10 +8,7 @@ import com.erensayar.FindPlacesApi.models.response.GooglePlaceApiResponse;
 import com.erensayar.FindPlacesApi.models.response.GooglePlaceApiResponse.Result;
 import com.erensayar.FindPlacesApi.service.PlaceService;
 import com.erensayar.FindPlacesApi.service.QueryService;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
@@ -32,14 +29,16 @@ public class QueryServiceImpl implements QueryService {
 
     private final PlaceService placeService;
     private final GooglePlacesApiConstant googlePlacesApiConstant;
+    private final ObjectMapper objectMapper;
 
     @Override
     public List<Place> sendQueryToGooglePlacesApi(Map<String, String> paramMap) {
-        String coordinate = paramMap.get("location").replaceAll("\\s","");
+        String coordinate = paramMap.get("location").replaceAll("\\s", "");
         String radius = paramMap.get("radius");
+        String type = paramMap.get("type");
 
         // This params(coordinate+radius) help me when I'm controlling, query is recurring query?
-        String searchParamsCoordinateRadius = coordinate + "-" + radius;
+        String searchParamsCoordinateRadius = coordinate + "-" + radius + "-" + type;
 
         // If the query has been made before, it returns the registered answer.
         // If not registered method return null and we continue.
@@ -141,9 +140,6 @@ public class QueryServiceImpl implements QueryService {
 
     // Deserialize
     private GooglePlaceApiResponse decodeResponse(ResponseBody responseBody) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        objectMapper.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
         try {
             return objectMapper.readValue(responseBody.string(), GooglePlaceApiResponse.class);
         } catch (IOException e) {
