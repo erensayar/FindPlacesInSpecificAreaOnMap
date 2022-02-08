@@ -1,5 +1,6 @@
 import React from 'react'
 import PlaceCardList from '../components/PlaceCardList'
+import Counter from '../redux/redux-example/Counter'
 
 const Home = () => {
 
